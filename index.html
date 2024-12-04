@@ -1,35 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IOS内测安装包</title>
-  <style>
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 40vh;
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+<title>
+iOS版-APP安装
+</title>
+
+<style type="text/css">
+    .title{
+        background: #fdfdfd;
+        height: 90px;
+        font-size: 30px;
+        padding: 20px;
+        border-bottom: 3px solid #dddddd;
+        box-shadow: 0 2px 0 #dddddd;
     }
-  </style>
+    .title span{
+        color: #666666;
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .installBody{
+        text-align: center;
+        margin-top: 150px;
+        font-size: 3rem;
+    }
+    img.icon{
+        margin-top:auto;
+        margin-bottom: auto;
+        height: 200px;
+        width: 200px;
+        border:2px solid #dddddd;
+        border-radius: 20px;
+        padding:20px;
+    }
+    .tip{
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    .action{
+        display:inline-block;
+        width:220px;
+        height:60px;
+        margin:20px auto 20px auto; 
+        padding:5px;
+        background:#00bc9e; 
+        color:#ffffff;
+        font-size:30px;
+        text-decoration:none;
+        text-align: center;
+    }
+</style>
+
+<script>
+    function load()
+    {
+        function myBrowser(){
+            var userAgent = navigator.userAgent;
+            var isOpera = userAgent.indexOf("Opera") > -1;
+            if (isOpera) {
+                return "Opera"
+            }; 
+            if (userAgent.indexOf("Firefox") > -1) {
+                return "FF";
+            } 
+            if (userAgent.indexOf("Chrome") > -1){
+          return "Chrome";
+         }
+            if (userAgent.indexOf("Safari") > -1) {
+                return "Safari";
+            } 
+            if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+                return "IE";
+            }; 
+        }
+        var mb = myBrowser();
+        if ("Safari" == mb) {
+            document.getElementById("warning").visibility == "hidden";
+        }
+    }
+</script>
 </head>
-<body>
-  
-   「微信页面不能安装，请点击右上角"在Safari中打开"」
-  <div class="container">
-    <a style="
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 30px;
-    font-size: 20px;" href="itms-services://?action=download-manifest&url=https://gitee.com/flyingloong/ios-ipa/raw/master/manifest.plist">
-      下载
-    </a>
-    
-  </div>
+<body onload="load()">
+    <div class="title"><span style="margin-left:40px; font-size: 40px;">APP</span><span style="margin-left: 50px;">版本：1.0.0(build 10)</span><span>/</span><span>大小：2.4MB</span><span>/</span><span>2017-12-08</span></div>
+    <div class="installBody">
+        <div><img class="icon" src="https://gitee.com/flyingloong/ios-ipa/raw/master/512X512.png"></div>
+        <a class="action" href="itms-services:///?action=download-manifest&url=https://gitee.com/flyingloong/ios-ipa/raw/master/manifest.plist">点击安装</a>
+        <div class="tip"><span style="display: inline-block;background: #4fbbd4;border:1px solid #dddddd; border-radius: 5px;">适用于iOS设备</span><span style="display: inline-block;background: #d94f50;border:1px solid #dddddd; border-radius: 5px;">正式版</span></div>
+        <p style="font-size: 24px;">
+            <span id="warning">若无法安装请点击右上角，选择Safari打开此页面。</span><br/>
+            <br/>
+            点击安装后，回到桌面查看安装进度。
+            <br/>
+            <span style="color: red;">首次安装需做以下操作：
+            <br/>
+        打开手机设置-->通用-->描述文件与设备管理-->在企业应用栏下点击BGI Tech做信任授权
+            </span>
+        </p>
+    </div>
 </body>
 </html>
+
